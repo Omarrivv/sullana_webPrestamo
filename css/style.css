@@ -1,0 +1,333 @@
+:root{  /* selector*/
+    --verde:#00A149;
+    --blanco:#fff;
+    --rojo:#e40f16;
+    --oscuro:#000;
+    --titulos:'Arima Madurai',cursive; /*definir el tipo de letra*/
+    --parrafos:'Mulish', sans-serif; /*lo mismo el formato del texto*/
+}
+html{
+    box-sizing: border-box; /*respeta el valor calculado pero aun no ase nada */
+    /*1rem = 10px*/
+    font-size: 62.5%; /*recetera el valor calculado del navegador ya no mide 16px ahora mide 10px : lo que hace el rem es el valor calculado del navegador multiplicado por la cantidad que se le esta poniernedo 2rem */
+}
+body{
+    font-size: 1.6rem; /*al body le estamos diciendo que por defecto otra vez tenga 16px entonces le ponemos 1.6rem*/
+    overflow-x: hidden;
+}
+*,*::after, *::before{ /*al selector universal le ponemos un after y un before : en pocas palabras que a todos los elementos y cuando esos dichos elementos tambien tengan seubdoelementos : after y before son seudoelementos */
+    box-sizing: inherit; /*osea q esas dos propiedades mejor dicho box-sizing: border-box; y box-sizing: inherit; lo que hace q tanto al html como a todos los elementos lo que hace es representar el valor controlado de un contenedor padre */
+} /*los rem se basan en el valor calculado que el navegador le inpone por defecto al tmño de la letra: por defecto dice vas a medir 16px : cada rem 16px: los rem estan diseñados para soportar una gran cantidad de pixelaje y todo los colores los tamaños , tamaño de texto , etc */
+/*globales*/
+.contenedor{
+    max-width: 120rem; /*1200 px = 120rem */
+    margin: 0 auto; /*centrar arriba y abajo lo pone 0 px y auto y isquierda y derecha el espacio que hayga disponible y con eso lo centra */
+    width: 95%; /*lo que ase es de base le pusimos que tenga 1200 a menos no puede tener mas de 1200 entonces ese valor q tenga le vamos a sacar el 95%  : lo que ase es crear un pequeño bordesito para yo poder pasar mi dedo cuando hayga un dispositivo mas pequeño ya defini mi clase ahora la voya utilizar me dirigo al index .html => */
+}
+h1,h2{
+    font-family: var(--titulos); /*se espesifica el formato*/
+}
+h3, p, a{ /*llamamos nuestras variables (dentro del parentesis va el nombre de nuestra variable )*/
+    font-family: var(--parrafos); /*se especifica elformato */
+}
+img{
+    max-width: 100%; /*para que las imagenes ocupen el 100% de su contenedor padre */
+}
+.verde{
+    color: var(--blanco); /*espesificamos el color del texto */
+}
+.rojo{
+    color: var(--blanco); /*espesificamos el color del texto */
+}
+.ocultar{
+    display: none; /*lo oculta pero no lo muestra en el html : cierta palabras la borra del html */
+}
+.btn-cerrar{
+    font-size: 3rem; /*el tamaño de la x que seria el x que sale al darle click al menu*/
+    font-weight: bold; /*para que se vea un poco mas de volumen */
+    color: var(--blanco); /*ya que es un parrafo le agregamos q van aser de un color blasnco */
+    position: absolute; /*para que se nos puede agregar el left right y todo eso*/
+    top: 0; /*un top 0 para q se pongo arriba */
+    right: 50px; /*un right de 50px */
+    user-select: none; 
+}
+
+.pantalla-completa{
+    position: absolute;/**/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(56, 55, 55, 0.5);
+    z-index: 4; /*es basicamente como se van sobreposicionar o sobreponetr los elemetos */
+}
+@keyframes desplazamiento {
+    0%{
+        transform: translateX(100%); /*osea de izquierda y derecha le ponemos q sea -100%*/
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+.btn-cerrar:hover{
+    cursor: pointer; /*cuando haga hiver se ponga el cursor pointer para que se poonga la manito */
+}
+
+.btn{
+    text-decoration: none; /*para que lequite el subroyado del enlace */
+    color: var(--blanco); /*definimos el color q tendra*/
+    font-size: 2rem; /*el tamaño q tendra */
+    text-transform: capitalize; /*que la primera letra de cada palabra sea mayuscula */
+    padding: 1rem 5rem; /*arriba y abajo de 1rem izquierda y derecha 5rem */
+    border-radius: 5px; /**/
+    transition: all .3s ease-in-out; /*al inicio de la animacion y al final */
+}
+@media(min-width: 768px) {
+    .btn{
+        font-size: 2.2rem; /*especifica la dimensión de la letra*/
+    }
+}
+.bordes{
+    border: 3px solid var(--blanco); /*3px  solido de color blanco */
+}
+@media(min-width: 768px) {
+    .bordes{
+        border: 4px solid var(--blanco); 
+    }
+}
+.bordes:hover{
+    color: var(--rojo); /*el color q tendra el tipo de letra */
+    background-color: var(--blanco); /*el fondo de el borde */
+}
+.btn-rojo{
+    background-color: var(--rojo); /*El fondo de todo eso sea un div : rellena de color rojo todo el espacion q tenga esa etiqueta*/
+    font-weight: bold;
+    display: inline-block; /**/
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.btn-verde{
+    background-color: var(--verde);
+    border: none;
+    display: inline-block; /**/
+    margin-bottom: 2rem; /*para que hayga una separacion */
+    font-family: var(--parrafos);
+}
+.btn-verde:hover{
+    background-color: var(--rojo); /*fondode transition*/
+}
+/*encabezado*/
+.contenedor-navegacion{
+    background-color: var(--rojo); /*nuestro color  de fonfo*/
+    position: relative;
+    z-index: 5; /*para activar los z-index tienes q tener una posicion relative */
+}
+.contenido-navegacion{
+    display: flex; /*por defecto alinea de izquierda a derecha nos pone nuestro elemneto uno al lado del otro a la izquierda esta mi logo y a la derecha mi barra de navegacion */
+    align-items: center; /*centrase de manera vertical */
+    justify-content: space-between; /* nos alinea de izquierda a derecha y los one alas esquinas */
+}
+.logo h2, .navegacion a {
+    color: var(--blanco);  /*especificamos el color yamando a las vvariables q definimos */
+  }
+  .logo h2{
+      font-size: 3rem; /**/
+  }
+  .navegacion a{ /*estilos de movil*/
+    text-decoration: none; /*para que nos quite la linea q se hace cpomo un azul */
+    font-size: 2.2rem; /*un font size de 20px */
+    padding: 1.5rem; /*y un padding a todos los lados de 1rem */
+    padding-left: 4rem;
+    display: block; /*los elementos que tienen un display block se ponene uno debajo del otro */
+    transition: color .3s ease-in-out; /*ay se le agrega una transicion */
+    text-align: center;
+    /*para que mis enlaces esten uno arriba del otro : a los enlaces le ponemos un display block que por defecto los enlaces tiene un display inline */
+}
+/*los media queryque van hacer de tableta y escritorio */
+@media(min-width: 768px) {
+    .navegacion a{
+        text-align: left; /*se pone al lado isquierdo */
+    }
+}
+/*nth-child lo que ase basicamente es lo que le pases entre el parntesis lo va aser con sus elementos hermanos por asi decirlo : los numeros q sean pares */
+.navegacion a:nth-child(even):hover{
+    color: var(--rojo); /*mis elementos hijos vana aser hermanos los q vana ser pares yo paso el cursosr y solamentelos q son pares se pintan de rojo */
+}
+.navegacion a:nth-child(odd):hover{
+    color: var(--verde); /*osea los impares color verde siempre con el hover los q sean hermanos impares se pintan de verde */
+}
+.navegacion a:first-of-type{
+    margin-top: 5rem; /*osea al primer hijo un margin top de 5 rem y lo empuja un poco mas abajoy solo se agrego a el primer enlace */
+}
+.navegacion{
+    position: absolute; /*para poder activar el right el left y el bottton y asi vamos posicionando nuestros elementos mas bien la posicion del elemento como yo puse top 0 en la esquina que se encuentra mi menu hamburguesa y como puse right 0 se pone en la esquina de la derecha */
+    top: 0;
+    right: 0;
+    bottom: 0; /*si quiere que ocupe todo el espacio hasta abajo le ponemos un botton de 0 y ocupa todo el espacio que hay disponible */
+    height: 100vh; /*q ocupe todo el espacio disponible q hay en la pantalla osea el 100% de la pantalla */
+    width: 40rem;
+    padding: 3rem 4rem;
+    background-color: var(--rojo);
+    animation: desplazamiento .5s ease-in-out;
+}
+.hamburguesa:hover{
+    cursor: pointer; /*para a la hora de dirigirme a el meniu hamburguesa ekl curso se pongo en forma de mnito*/
+}
+
+.hamburguesa span{
+    background-color: var(--blanco); /*color del menu de hamburguesa*/
+    display: block; /**/
+    width: 5rem;
+    height: .5rem;
+    margin-bottom: .5rem;
+}
+/*video*/
+.contenido-header{
+    position: relative; /*para poder poner un seudoelemento*/
+}
+.contenido-header::before{
+    content: '';
+    position: absolute; /*basicamente el pseuoelemto se vuelve hijo y el contenedor al que le estamos agregando el pseudoelemnto se vuelve el padre : entonces el padre guia un position relative y el hijo un position absolute : como tenemos un posicon absolute tenemos acceso al top let right y botton : esos 4 van ocupar todo el espacio q hay disponibe en todas las direcciones */
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+}
+.texto-encabezado{
+    position: absolute; /*para que se ponga encima de difuminado  */
+    z-index: 2;
+    width: 100%; /*que ocupa el 100%*/
+    height: 80%;
+    display: flex; /*y se pone uno al lado del otroya que flexbox se alinea de izquierda aderecha por defecto */
+    flex-direction: column; /*align item y justifan content */
+    align-items: center; /*alinea de izquierda a derecha */
+    justify-content: center; /*lo alinea de manera vertical al centro d etodo : eso solo pasa cuando se cambia la direcciob de flex-box*/
+}
+.texto-encabezado h2{
+    color: var(--blanco);
+    font-size: 4rem;
+}
+
+@media(min-width: 768px) { /*una tableta hacia arriba */
+    .texto-encabezado h2{
+        font-size: 8rem; /*especifica la dimensión de la letra*/
+    }
+}
+
+video{
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos generales para todos los dispositivos */
+.mostrarNombreUsuario {
+    text-align: center; /* Centrar el contenido */
+}
+
+/* Estilos del mensaje de bienvenida */
+.mensajeBienvenida {
+    font-size: 18px;
+    color: #333;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box; /* Asegura que el fondo no se extienda al borde */
+    animation: borderPulse 2s infinite linear;
+}
+@keyframes borderPulse {
+    0% {
+        border-color: #ff0000;
+    }
+    50% {
+        border-color: #0000ff;
+    }
+    100% {
+        border-color: #ff0000;
+    }
+}
+
+.containerCredito {
+    text-align: center;
+    font-size: 24px;
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+
+  @media (max-width: 600px) {
+    .containerCredito {
+      font-size: 18px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+      padding: 15px; /* Ajusta el relleno para pantallas más pequeñas */
+    }
+}
+
+.separador{
+    /* background-image: url('/img/logo-s-slogan.png'); */
+    background-color: rgb(139, 130, 130);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 2;
+}
+.separador::before{
+    content: ''; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: -1;
+}
+.contenido-separador{
+    padding: 5rem;/*en todos los lados de 5rem y crece un poco mas el contenido */
+}
+
+.contenido-separador h2{
+    font-size: 4rem;
+    color: var(--blanco);
+    text-align: center; 
+}
+@media(min-width: 768px) { /*tableta asia arriba*/
+    .contenido-separador h2{
+        text-align: left;
+        font-size: 5rem;
+        color: var(--blanco);
+    }
+}
+.contenido-separador p{
+    color: var(--blanco);
+    font-size: 3rem;
+    text-align: center;
+}
+@media(min-width: 768px) {
+    .contenido-separador p{
+        text-align: left;
+    }
+}
+
+.div-form-sullana {
+    background-color: #f4f4f4; /* Color de fondo para el formulario */
+    padding: 20px; /* Espaciado interno */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.form-sullana-text {
+    font-size: 18px; /* Tamaño del texto */
+    line-height: 1.5; /* Altura de línea para una mejor legibilidad */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .form-sullana-text {
+        font-size: 16px; /* Ajusta el tamaño del texto para dispositivos más pequeños */
+    }
+}
+
